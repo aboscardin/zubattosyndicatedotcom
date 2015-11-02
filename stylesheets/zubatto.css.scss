@@ -1,0 +1,733 @@
+/*
+Zubatto Website
+*/
+
+/*
+ Reset
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block; }
+
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; margin: 0; }
+
+body, html {
+    height: 100%;
+    width: 100%;
+}
+
+/* html { overflow: hidden; } */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased!important;
+    font-size: 11px;
+
+}
+
+#mobile { display: inline; }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0;
+
+    li {
+        display: block;
+    }
+
+}
+
+/* Fonts */
+h1, h2, h3 { font-weight: 100; }
+
+h1 { font-size: 3em; margin-bottom: 1em;}
+h2 { font-size: 2em; }
+h3 { font-size: 1.5em; }
+
+
+.page {
+    height: 100%;
+    nav.primary-nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #4e4e4e;
+        z-index: 1000;
+
+        a.logo {
+            background-image: url(../images/zs_logo.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 46.4px;
+            text-indent: -9999px;
+            overflow: hidden;
+            width: 62.8px;
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        ul.menu-list {
+            margin-left: 60px;
+            li {
+                display: inline-block;
+                width: 15.75%;
+                opacity: .75;
+                //max-height: 32px;
+
+                a {
+                    color: #FFF;
+                    text-decoration: none;
+                    display: block;
+                    //height: 33px;
+                    background: transparent;
+                    padding: 5px 0;
+                    font-size: 1em;
+                    text-align: center;
+                  }
+
+                &:last-child {
+                    width: 16%;
+                    a {
+
+                    }
+                }
+            }
+
+            li.selected,
+            li:hover {
+                background-color: #FFF;
+
+                a { color: #4e4e4e; }
+            }
+
+        }
+
+    }
+
+    section {
+        min-height: 100%;
+        height: auto;
+        //padding-bottom: 365px;
+        padding-top: 50px;
+        text-align: center;
+        position: relative;
+
+        .content {
+            //margin-bottom: 5px;
+            padding-bottom: 50px;
+
+            h2 {
+                color: #4e4e4e;
+            }
+
+            img { max-width: 95%; }
+
+            a.icon {
+              font-size: 1.5em;
+              color: #FFF;
+              img { width: 20px; height: auto; }
+            }
+            ul {
+                background-color: #e4e6e5;
+                opacity: .80;
+                padding: .75em;
+
+                li {
+                    display: block;
+                    padding-left: 2em;
+                    text-align: left;
+                    margin-bottom: .5em;
+
+                    a {
+                        color: #428bca;
+                        text-decoration: none;
+                    }
+
+                    a:hover {
+                        border-bottom: 2px solid #428bca;
+                    }
+
+                    span {
+                        color: #4e4e4e;
+                        font-size: .75em;
+                        display: block;
+                    }
+                }
+            }
+            p {
+                margin: .75em auto;
+                width: 95%;
+                line-height: 1.3em;
+            }
+            &.video {
+                max-width: initial;
+                width: 100%;
+
+                ul li {
+                    position: relative;
+                    float: left;
+                    //min-height: 200px;
+                    //min-width: 400px;
+                    //width: 50%;
+                    //height: auto;
+                    background-color: #000;
+
+                    .wrapper {
+                        height: 100%;
+
+                        .embed {
+                            height: 100%;
+                            width: 100%;
+                            position: absolute;
+                            top: 0;
+                            display: none;
+                            iframe { max-width: 100%; max-height: 100%; }
+                        }
+                        .thumb {
+                            position: absolute;
+                            top: 0;
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+
+                            img {
+
+                            //width: auto;
+                            //height: 100%;
+                                max-height: 100%;
+                                max-width: 100%;
+                                margin: auto;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                bottom: 0;
+                                right: 0;
+                            }
+                        }
+                    }
+                    /* Video magic */
+                    &.active {
+                        .embed { display: block; }
+                        .thumb { display: none; }
+                    }
+                }
+            }
+        }
+    }
+    section > .container {
+            margin: 0 auto;
+    }
+
+    .parallax {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    .up {
+        background-position: 100% 700px;
+    }
+
+    .down {
+        background-position: 100% -700px;
+    }
+
+}
+
+.page > .container {
+    height: 100%;
+}
+
+#top {
+    //background-color: #9b59b6;
+    color: #FFF;
+    //background-image: url(../images/robby.png);
+    background-color: #9b59b6;
+    background-image: url(../images/robby-mobile.png);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: 50% 95%;
+    .container {
+        height: 100%;
+    }
+
+    .content {
+        background-color: #9b59b6;
+        opacity: 1;
+        padding: 0;
+
+        h1 {
+            margin-bottom: .5em;
+        }
+        h2, h3 {
+            color: #FFF;
+        }
+        h2 {
+            margin-bottom: .25em;
+        }
+
+        ul {
+            background-color: transparent;
+            li {
+                //display: block;
+                text-align: center;
+                display: inline-block;
+                padding: 0;
+                margin: 0 2em;
+                a {
+                    font-size: 1.75em;
+                    color: #181818;
+                    font-weight: 200;
+                }
+            }
+        }
+
+    }
+}
+
+#listen {
+    color: #FFF;
+    background: #17aedf url(../images/all-laugh.png) no-repeat 50% 95%;
+    background-size: 80%;
+    padding-bottom: 35%;
+
+    iframe { max-width: 96%; margin: 0 auto; display: block; }
+
+    .content {
+        //background-color: #17aedf;
+        opacity: 1;
+        max-width: 90%;
+        margin: 0 auto;
+        .bx-wrapper .bx-viewport {
+            left: initial;
+        }
+
+        ul {
+            background: transparent;
+            li {
+                padding: 2em 0 2em;
+            }
+        }
+    }
+}
+
+#news {
+    background-color: #e4e6e5;
+    color: #4e4e4e;
+    .content ul li a {
+        color: #181818;
+    }
+
+
+}
+
+#about {
+    color: #FFF;
+    background-color: #3A5A9A;
+    padding: 200px 0;
+    background-image: url(../images/iggy-mobile.png);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: 50% 5%;
+
+    .content ul.people {
+        background: transparent;
+        opacity: 1;
+        li {
+            text-align: center;
+        }
+    }
+}
+
+#media {
+    background-color: #1abc9c;
+    color: #e4e6e5;
+    padding-top: 90px;
+
+    ul {
+        background: transparent;
+        height: 100%;
+    }
+    .photos, .video {
+        .bx-wrapper, .bx-viewport {
+            height: 230px !important; //provide height of slider
+        }
+    }
+
+
+    .bx-wrapper .bx-viewport {
+        left: 0;
+        box-shadow: none;
+        border: none;
+
+        ul {
+            padding: 0;
+            li {
+                padding-left: 0;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .press,
+    .video,
+    .photos {
+        .bx-wrapper .bx-viewport {
+            ul li {
+                height: 100%;
+                a {
+                    height: 100%;
+                    display: block;
+                    background: #000;
+                    img {
+                        max-height: 100%;
+                        max-width: 100%;
+                        height: 100%;
+                        margin: 0 auto;
+                    }
+                }
+            }
+        }
+    }
+    .press {
+        .bx-wrapper .bx-viewport ul {
+            li.press-item {
+                background-color: #000;
+                font-size: 1.25em;
+                color: #FFF;
+                padding: 4em;
+                .author {
+
+                }
+                .image {
+                    img {
+                        background: #FFF;
+                        max-width: 80%;
+                        height: auto;
+                        margin: 1em auto;
+                        padding: 2em;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#contact {
+    //height: initial;
+    //min-height: initial;
+    background-color: #4e4e4e;
+
+    background-image: url(../images/all-run.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0 90%;
+    color: #FFF;
+
+    ul.social {
+        background: transparent;
+        li {
+            display: inline-block;
+            vertical-align: top;
+            padding-left: 0;
+            margin-right: .75em;
+
+            &:first-child {
+                padding-top: .5em;
+            }
+
+            a {
+                color: #FFF;
+                img {
+                    width: 25px;
+                    height: 25px;
+                    fill: #FFF;
+                }
+            }
+        }
+
+    }
+
+
+    #mc_embed_signup{
+        background:transparent;
+        clear:left;
+        color: #FFF;
+        input.email {
+            display: inline-block;
+        }
+        input.button {
+            display: inline-block;
+        }
+
+    }
+}
+
+.fancybox-wrap {
+
+  padding: 3em;
+  font-size: 75%;
+  h1 {
+      margin-bottom: .25em;
+  }
+  h2 {
+      margin-bottom: .15em;
+  }
+  h3 {
+      display: inline;
+  }
+  p {
+      font-size: 1.2em;
+      margin: .5em 0;
+  }
+
+}
+
+
+
+/* Media Queries */
+@media (min-width: 394px ) {
+    body {
+        font-size: 75%;
+    }
+}
+
+@media (min-width: 420px) {
+    body {
+        font-size: 80%;
+    }
+}
+
+@media (min-width: 520px) {
+    body {
+        font-size: 85%;
+    }
+}
+
+/* Medium (Tablet)  */
+@media ( min-width: 641px ) {
+    body {
+        font-size: 95%;
+    }
+}
+
+/* Large Desktop */
+@media (min-width: 769px) {
+    #mobile { display: none; }
+
+    .page {
+        nav.primary-nav {
+            a.logo {
+                height: 58px;
+                width: 78.5px;
+                top: 3px;
+            }
+
+            ul.menu-list {
+                margin-left: 78px;
+
+                li {
+                    a {
+                        padding: .5em;
+                        font-size: 1em;
+                    }
+                }
+            }
+
+        }
+
+
+        section {
+            //background-position: left center,right center;
+            //background-repeat: no-repeat;
+            //padding-bottom: 65px;
+            //background-size: contain;
+            padding-top: 50px;
+            //text-align: center;
+            //position: relative;
+
+            //.parallax { display: block; }
+
+
+            .content {
+                max-width: 480px;
+                margin: 0 auto;
+
+
+            }
+
+            .parallax {
+                //background-color: #4e4e4e;
+                display: block;
+                height: 100%;
+                max-width: 1400px;
+                z-index: 0;
+                background-size: 100%;
+            }
+
+        }
+    }
+
+    #about {
+        padding-top: 50px;
+        background-image: none; //url(../images/iggy.png) !important;
+        background-size: 98%;
+        .parallax {
+             background-image: url(../images/iggy.png) !important;
+        }
+    }
+
+    #top {
+        //padding-top: 90px;
+        //height: 800px;
+        //background-image: none;
+        background-image: none; //url(../images/robby.png) !important;
+        //background-size: 98%;
+        .content {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            right: 0;
+            z-index: 4;
+        }
+        .parallax {
+            background-image: url(../images/robby.png) !important;
+        }
+    }
+
+    #listen {
+        padding: 90px 0 200px;
+        //height: 650px;
+        background-position: 100% 95%;
+        background-size: 50%;
+        .content {
+            max-width: 480px;
+        }
+    }
+
+    #media {
+        padding-top: 90px;
+        padding-bottom: 250px;
+        //height: 580px;
+        background-image: none;
+
+        .content {
+            &.press,
+            &.photos,
+            &.video {
+                width: 85%;
+                max-width: 960px;
+                ul li {
+                    background-color: #000;
+                    height: 540px;
+
+                    .thumb {
+                        img {
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+                }
+            }
+        }
+        .photos, .video {
+            .bx-wrapper, .bx-viewport {
+                height: 535px !important; //provide height of slider
+            }
+        }
+        .press .bx-wrapper, .bx-viewport ul {
+            li.press-item {
+                .image {
+                    img {
+                        max-width: 50%;
+                    }
+                }
+            }
+        }
+    }
+    #contact {
+        background-image: none;
+        padding-bottom: 266px;
+        .container {
+            height: 100%;
+        }
+        .content {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            right: 0;
+            z-index: 4;
+
+            ul.social {
+                li {
+                    &:first-child {
+                        padding-top: .25em;
+                    }
+                }
+            }
+        }
+
+        .parallax {
+            background-size: 75%;
+        }
+        #run1 {
+            background-image: url(../images/run1.png);
+        }
+
+        #run2 {
+            background-image: url(../images/run2.png);
+        }
+
+        #run3 {
+            background-image: url(../images/run3.png);
+        }
+
+        #run4 {
+            background-image: url(../images/run4.png);
+        }
+    }
+}
